@@ -99,12 +99,12 @@ export function Hero() {
 
           <motion.div variants={buttonReveal}>
             <motion.a
-              href="#contact"
-              className="hero-button inline-flex w-max items-center justify-center rounded-sm bg-[#c6973a] px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-slate-950"
-              whileHover={{ y: -2, scale: 1.02, boxShadow: "0 20px 45px rgba(198, 151, 58, 0.18)" }}
+              href="#services"
+              className="hero-button inline-flex w-max items-center justify-center rounded-sm bg-[#c6973a] px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-slate-950 transition duration-300 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#c6973a]/80"
+              whileHover={{ y: -2, scale: 1.02, boxShadow: "0 22px 55px rgba(198, 151, 58, 0.20)" }}
               whileTap={{ scale: 0.99 }}
             >
-              Get Consultation
+              Explore Services
               <ArrowRight className="ml-3 h-4 w-4" />
             </motion.a>
           </motion.div>
