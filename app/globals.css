@@ -179,6 +179,28 @@
   }
 }
 
+.leaflet-container {
+  background: #0b2239;
+  border-radius: 1rem;
+}
+
+.custom-map-marker {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 36px;
+}
+
+.custom-map-marker-dot {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #c6973a;
+  box-shadow: 0 0 0 4px rgba(198, 151, 58, 0.22);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+}
+
 @layer utilities {
   @keyframes blink {
     0%, 50% { opacity: 1 }

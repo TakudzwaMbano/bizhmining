@@ -3,6 +3,12 @@
 import { useState, type FormEvent } from "react"
 import { Phone, Mail, MapPin, ArrowRight, CheckCircle2 } from "lucide-react"
 import { Reveal } from "@/components/reveal"
+import dynamic from "next/dynamic"
+
+const ContactMap = dynamic(() => import("@/components/contact-map").then((mod) => mod.ContactMap), {
+  ssr: false,
+  loading: () => null,
+})
 
 const services = [
   "Exploration",
@@ -13,11 +19,19 @@ const services = [
   "Other",
 ]
 
-const details = [
-  { icon: Phone, label: "Phone", value: "+27 (0) 11 000 0000" },
-  { icon: Mail, label: "Email", value: "info@bizhmining.co.za" },
-  { icon: MapPin, label: "Office", value: "Johannesburg, South Africa" },
+const addressLines = [
+  "369 Dorstone Crescent",
+  "Cedar Creek Estate",
+  "Broadacres",
+  "Johannesburg, South Africa",
 ]
+
+const southAfricaPhone = "+27 79 174 4275"
+const zimbabwePhone = "+263 77 385 2864"
+const emailAddress = "info@bizhmining.co.za"
+const googleMapsUrl =
+  "https://www.google.com/maps/search/?api=1&query=" +
+  encodeURIComponent(addressLines.join(", "))
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -30,55 +44,91 @@ export function Contact() {
   return (
     <section id="contact" className="bg-navy py-20 lg:py-28 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-              Get In Touch
-            </span>
-            <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Let&apos;s Discuss Your Mining Project
-            </h2>
-            <p className="mt-5 max-w-md text-pretty leading-relaxed text-white/60">
-              Whether you&apos;re planning a new operation, optimizing production, or improving
-              safety performance, Bizh Mining is ready to help.
-            </p>
+        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+          <div className="space-y-10">
+            <Reveal>
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                Contact & Locations
+              </span>
+              <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Elevate your mining project with expert advisory and clear contact pathways.
+              </h2>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
+                Reach Bizh Mining through our South African office or regional Zimbabwe team. The
+                section is designed to be calm, confident and easy to use.
+              </p>
+            </Reveal>
 
-            <div className="mt-10 space-y-5">
-              {details.map((detail) => (
-                <div key={detail.label} className="flex items-center gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm border border-white/10 bg-navy-secondary text-gold">
-                    <detail.icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-white/50">
-                      {detail.label}
-                    </p>
-                    <p className="text-sm font-medium text-white">{detail.value}</p>
-                  </div>
+            <Reveal delay={0.08}>
+              <article className="overflow-hidden rounded-[24px] border border-white/10 bg-navy-secondary/90 p-10 shadow-[0_30px_80px_rgba(0,0,0,0.24)]">
+                <div className="space-y-8">
+                  <InfoRow
+                    icon={MapPin}
+                    heading="South Africa Office"
+                    details={addressLines}
+                    href={googleMapsUrl}
+                    actionLabel="View on Google Maps"
+                    delay={0.1}
+                  />
+
+                  <div className="h-px bg-white/10" />
+
+                  <InfoRow
+                    icon={Phone}
+                    heading="South Africa"
+                    details={[southAfricaPhone]}
+                    href={`tel:${southAfricaPhone.replace(/\s+/g, "")}`}
+                    delay={0.15}
+                  />
+
+                  <div className="h-px bg-white/10" />
+
+                  <InfoRow
+                    icon={Phone}
+                    heading="Zimbabwe"
+                    details={[zimbabwePhone]}
+                    href={`tel:${zimbabwePhone.replace(/\s+/g, "")}`}
+                    delay={0.2}
+                  />
+
+                  <div className="h-px bg-white/10" />
+
+                  <InfoRow
+                    icon={Mail}
+                    heading="Email"
+                    details={[emailAddress]}
+                    href={`mailto:${emailAddress}`}
+                    delay={0.25}
+                  />
                 </div>
-              ))}
-            </div>
-          </Reveal>
+              </article>
+            </Reveal>
+          </div>
 
-          <Reveal delay={0.15}>
-            <div className="rounded-sm border border-white/10 bg-navy-secondary p-7 sm:p-9">
+          <Reveal delay={0.12} x={80}>
+            <div className="rounded-[24px] border border-white/10 bg-navy-secondary/90 p-10 shadow-[0_30px_80px_rgba(0,0,0,0.24)]">
               {submitted ? (
-                <div className="flex h-full min-h-80 flex-col items-center justify-center text-center">
+                <div className="flex min-h-[320px] flex-col items-center justify-center gap-4 text-center">
                   <CheckCircle2 className="h-14 w-14 text-gold" aria-hidden="true" />
-                  <h3 className="mt-5 text-xl font-semibold text-white">Thank you</h3>
-                  <p className="mt-2 max-w-xs text-sm text-white/60">
-                    Your request has been received. Our team will be in touch shortly to
-                    discuss your mining project.
+                  <h3 className="text-2xl font-semibold text-white">Message received</h3>
+                  <p className="max-w-sm text-sm leading-6 text-white/70">
+                    Thanks for contacting us. A senior Bizh Mining specialist will be in touch to
+                    discuss your project and next steps.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  <Field label="Name" id="name" placeholder="John Doe" />
-                  <Field label="Company" id="company" placeholder="Company name" />
-                  <Field label="Email" id="email" type="email" placeholder="you@company.com" />
-                  <Field label="Phone Number" id="phone" type="tel" placeholder="+27 ..." />
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Name" id="name" placeholder="John Doe" />
+                    <Field label="Company" id="company" placeholder="Company name" />
+                  </div>
 
-                  <div className="sm:col-span-2">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Email" id="email" type="email" placeholder="you@company.com" />
+                    <Field label="Phone Number" id="phone" type="tel" placeholder="+27 79 174 4275" />
+                  </div>
+
+                  <div>
                     <Label htmlFor="service">Service Required</Label>
                     <select
                       id="service"
@@ -97,12 +147,12 @@ export function Contact() {
                     </select>
                   </div>
 
-                  <div className="sm:col-span-2">
+                  <div>
                     <Label htmlFor="message">Message</Label>
                     <textarea
                       id="message"
                       name="message"
-                      rows={4}
+                      rows={5}
                       placeholder="Tell us about your project..."
                       className="mt-2 w-full resize-none rounded-sm border border-white/15 bg-navy px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none transition-colors focus:border-gold"
                     />
@@ -110,18 +160,69 @@ export function Contact() {
 
                   <button
                     type="submit"
-                    className="group sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-7 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-gold/90"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-gold px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.12em] text-navy transition duration-300 hover:bg-gold/95"
                   >
                     Request Consultation
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="h-4 w-4" />
                   </button>
                 </form>
               )}
             </div>
           </Reveal>
         </div>
+
+        <Reveal delay={0.28}>
+          <div className="mt-12 overflow-hidden rounded-[24px] border border-white/10 bg-navy-secondary/90 shadow-[0_30px_80px_rgba(0,0,0,0.24)]">
+            <ContactMap />
+          </div>
+        </Reveal>
       </div>
     </section>
+  )
+}
+
+function InfoRow({
+  icon: Icon,
+  heading,
+  details,
+  href,
+  actionLabel,
+  delay,
+}: {
+  icon: typeof MapPin
+  heading: string
+  details: string[]
+  href: string
+  actionLabel?: string
+  delay: number
+}) {
+  return (
+    <Reveal delay={delay}>
+      <div className="space-y-4">
+        <div className="flex items-start gap-4">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-3xl bg-gold text-navy shadow-[0_14px_30px_rgba(198,151,58,0.18)]">
+            <Icon className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <div>
+            <p className="text-sm font-semibold text-white">{heading}</p>
+            <div className="mt-3 space-y-1 text-sm leading-7 text-white/70">
+              {details.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <a
+          href={href}
+          target={actionLabel ? "_blank" : "_self"}
+          rel={actionLabel ? "noreferrer" : undefined}
+          className="inline-flex text-sm font-medium text-gold transition hover:text-white"
+        >
+          {actionLabel ?? details[0]}
+        </a>
+      </div>
+    </Reveal>
   )
 }
 
