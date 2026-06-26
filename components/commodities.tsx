@@ -12,7 +12,7 @@ const commodities = [
 
 export function Commodities() {
   return (
-    <section id="industries" className="bg-background py-20 lg:py-28">
+    <section id="industries" className="bg-background py-20 lg:py-28 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">

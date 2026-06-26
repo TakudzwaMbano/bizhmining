@@ -45,8 +45,11 @@ const columnVariants = {
 
 export function About() {
   return (
-    <section id="about" className="relative overflow-hidden bg-slate-950 py-24 lg:py-32">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-slate-950/0 via-slate-950/50 to-slate-950/100" />
+    <section
+      id="about"
+      className="relative overflow-hidden bg-slate-950 bg-[url('/images/aboutbackground.webp')] bg-cover bg-center bg-no-repeat py-24 lg:py-32 scroll-mt-20"
+    >
+      <div className="absolute inset-0 bg-slate-950/80" />
       <div className="pointer-events-none absolute left-10 top-1/4 hidden h-80 w-[1px] bg-gradient-to-b from-transparent via-[#c6a861]/30 to-transparent lg:block" />
       <div className="pointer-events-none absolute right-10 bottom-10 hidden h-40 w-40 rounded-full border border-[#c6a861]/10 bg-[#c6a861]/5 blur-2xl lg:block" />
 

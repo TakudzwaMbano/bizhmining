@@ -32,7 +32,7 @@ const values = [
 
 export function Values() {
   return (
-    <section id="values" className="bg-muted py-24 lg:py-32">
+    <section id="values" className="bg-muted py-24 lg:py-32 scroll-mt-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
