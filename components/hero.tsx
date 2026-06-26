@@ -52,7 +52,7 @@ const buttonReveal = {
 }
 
 const backgroundZoom = {
-  hidden: { scale: 1.05 },
+  hidden: { scale: 1 },
   show: {
     scale: 1,
     transition: { duration: 10, ease: [0.22, 0.61, 0.36, 1] },
@@ -64,15 +64,22 @@ export function Hero() {
 
   return (
     <section id="home" className="relative min-h-[100vh] w-full overflow-hidden scroll-mt-20 text-white">
-      <motion.div
-        className="absolute inset-0 bg-[url('/images/hero-mining.png')] bg-cover bg-center bg-no-repeat"
-        initial={shouldReduceMotion ? { scale: 1 } : "hidden"}
-        animate="show"
-        variants={backgroundZoom}
-      />
+      <motion.video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/images/hero-mining.png"
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: [0.22, 0.61, 0.36, 1] }}
+      >
+        <source src="/VIDEOS/mining-stock.webm" type="video/webm" />
+      </motion.video>
 
-      <div className="absolute inset-0 bg-black/20" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.04),transparent_24%),linear-gradient(180deg,rgba(10,10,10,0.5),rgba(10,10,10,0.65))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(29,24,24,0.55),rgba(29,24,24,0.35),rgba(29,24,24,0.60))]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.04),transparent_22%),radial-gradient(circle_at_bottom_left,rgba(198,151,58,0.06),transparent_18%)]" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-[1600px] items-center px-6 pt-20 pb-8 sm:px-8 lg:px-12">
         <motion.div
