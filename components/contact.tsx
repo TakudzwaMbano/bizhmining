@@ -42,8 +42,13 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-navy py-20 lg:py-28 scroll-mt-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-[url('/images/contactsection.jpg')] bg-cover bg-center py-20 lg:py-28 scroll-mt-20"
+    >
+      <div className="absolute inset-0 bg-[rgba(29,24,24,0.75)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.24),transparent_32%),linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.45))]" />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           <div className="space-y-10">
             <Reveal>

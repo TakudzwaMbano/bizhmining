@@ -2,6 +2,7 @@
 
 import L from "leaflet"
 import { motion } from "motion/react"
+import { ArrowRight } from "lucide-react"
 import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from "react-leaflet"
 
 const officePosition: [number, number] = [-26.0118705, 27.9759657]
@@ -54,14 +55,15 @@ export function ContactMap() {
         </MapContainer>
       </div>
 
-      <div className="p-6">
+      <div className="flex justify-center p-6 pt-8">
         <a
           href="https://www.openstreetmap.org/directions?from=&to=-26.0118705%2C27.9759657"
           target="_blank"
           rel="noreferrer"
-          className="inline-flex w-full items-center justify-center rounded-sm bg-[#c6973a] px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-slate-950 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(198,151,58,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c6973a]/80"
+          className="inline-flex items-center justify-center rounded-full bg-[#c6973a] px-8 py-3 text-[14px] font-medium uppercase tracking-[0.18em] text-slate-950 transition duration-300 hover:-translate-y-0.5 hover:bg-[#d1a34d] hover:shadow-[0_12px_30px_rgba(198,151,58,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c6973a]/80"
         >
           Get Directions
+          <ArrowRight className="ml-2 h-4 w-4" />
         </a>
       </div>
     </motion.div>

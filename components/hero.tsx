@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion, useReducedMotion } from "motion/react"
 import { ArrowRight } from "lucide-react"
 
@@ -64,19 +65,37 @@ export function Hero() {
 
   return (
     <section id="home" className="relative min-h-[100vh] w-full overflow-hidden scroll-mt-20 text-white">
-      <motion.video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/images/hero-mining.png"
+      <motion.div
+        className="absolute inset-0 overflow-hidden"
         initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: [0.22, 0.61, 0.36, 1] }}
+        transition={{ duration: 0.65, ease: [0.22, 0.61, 0.36, 1] }}
       >
-        <source src="/VIDEOS/mining-stock.webm" type="video/webm" />
-      </motion.video>
+        <motion.div
+          className="absolute inset-0"
+          initial={shouldReduceMotion ? { scale: 1.08 } : { scale: 1.15 }}
+          animate={shouldReduceMotion ? { scale: 1.08 } : { scale: 1 }}
+          transition={
+            shouldReduceMotion
+              ? undefined
+              : {
+                  duration: 14,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }
+          }
+        >
+          <Image
+            src="/images/hero-mining.png"
+            alt="Hero mining operations background"
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+          />
+        </motion.div>
+      </motion.div>
 
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(29,24,24,0.55),rgba(29,24,24,0.35),rgba(29,24,24,0.60))]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.04),transparent_22%),radial-gradient(circle_at_bottom_left,rgba(198,151,58,0.06),transparent_18%)]" />
