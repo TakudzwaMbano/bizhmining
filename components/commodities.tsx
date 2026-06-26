@@ -25,7 +25,11 @@ export function Commodities() {
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {commodities.map((commodity, i) => (
-            <Reveal key={commodity.name} delay={i * 0.1}>
+            <Reveal
+              key={commodity.name}
+              delay={i * 0.1}
+              x={i % 2 === 0 ? -40 : 40}
+            >
               <div className="group relative flex h-full flex-col items-center overflow-hidden rounded-sm border border-border bg-card p-8 text-center transition-all hover:-translate-y-1 hover:border-gold hover:shadow-xl hover:shadow-navy/5">
                 <div className="relative h-16 w-16 overflow-hidden rounded-sm border border-white/10 bg-navy">
                   <Image

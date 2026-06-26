@@ -85,7 +85,7 @@ export function Services() {
           className="space-y-6 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] }}
         >
           <p className="text-xs uppercase tracking-[0.4em] text-[#c6a861]">
@@ -101,10 +101,10 @@ export function Services() {
 
         <motion.div
           className="mt-16 rounded-[1.5rem] border border-[#c6973a]/10 bg-[#111827]/95 backdrop-blur-sm p-8 sm:p-10 md:p-12"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.75, ease: [0.22, 0.61, 0.36, 1], delay: 0.1 }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={containerVariants}
         >
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 lg:gap-12">
             {services.map((service, idx) => (

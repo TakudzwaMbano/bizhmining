@@ -175,3 +175,13 @@
     scroll-behavior: smooth;
   }
 }
+
+@layer utilities {
+  @keyframes blink {
+    0%, 50% { opacity: 1 }
+    51%, 100% { opacity: 0 }
+  }
+  .blink-cursor {
+    animation: blink 1.2s step-start infinite;
+  }
+}

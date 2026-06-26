@@ -3,20 +3,14 @@
 import { motion, useReducedMotion } from "motion/react"
 import { ArrowRight } from "lucide-react"
 
+const heroLines = ["Elevating", "Global", "Mining", "Performance"]
+
 const badgeReveal = {
-  hidden: { opacity: 0, y: 12 },
+  hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
-  },
-}
-
-const charReveal = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { duration: 0.45, ease: [0.22, 0.61, 0.36, 1] },
+    transition: { duration: 0.78, ease: [0.22, 0.61, 0.36, 1] },
   },
 }
 
@@ -24,27 +18,48 @@ const headlineContainer = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.045,
-      delayChildren: 0.4,
+      staggerChildren: 0.18,
+      delayChildren: 0.3,
     },
   },
 }
 
-const paragraphReveal = {
-  hidden: { opacity: 0, y: 16 },
+const headingLine = {
+  hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, ease: [0.22, 0.61, 0.36, 1], delay: 0.8 },
+    transition: {
+      duration: 0.82,
+      ease: [0.22, 0.61, 0.36, 1],
+    },
   },
 }
 
-const ctaReveal = {
-  hidden: { opacity: 0, y: 12 },
+const subtitleReveal = {
+  hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1], delay: 1.0 },
+    transition: {
+      duration: 0.82,
+      ease: [0.22, 0.61, 0.36, 1],
+      delay: 1.15,
+    },
+  },
+}
+
+const buttonReveal = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.82,
+      ease: [0.22, 0.61, 0.36, 1],
+      delay: 1.35,
+    },
   },
 }
 
@@ -52,7 +67,7 @@ const backgroundZoom = {
   hidden: { scale: 1.05 },
   show: {
     scale: 1,
-    transition: { duration: 4.5, ease: [0.22, 0.61, 0.36, 1] },
+    transition: { duration: 10, ease: [0.22, 0.61, 0.36, 1] },
   },
 }
 
@@ -77,13 +92,15 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1600px] items-start px-6 pt-[9rem] pb-24 sm:px-8 lg:px-12">
         <motion.div
           initial={shouldReduceMotion ? { opacity: 1, y: 0 } : "hidden"}
-          animate="show"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
           variants={badgeReveal}
           className="w-full max-w-[650px] space-y-10"
         >
           <motion.p
             initial={shouldReduceMotion ? { opacity: 1, y: 0 } : "hidden"}
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
             variants={badgeReveal}
             className="text-xs uppercase tracking-[0.42em] text-[#c6a861]"
           >
@@ -91,30 +108,38 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            initial={shouldReduceMotion ? { opacity: 1 } : "hidden"}
-            animate="show"
+            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : "hidden"}
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
             variants={headlineContainer}
             className="space-y-1"
           >
-            <h1 className="text-[3.2rem] font-black leading-[0.95] tracking-[-0.03em] sm:text-[3.75rem] md:text-[4.3rem] lg:text-[4.8rem] xl:text-[5.2rem]">
-              <span className="block">Elevating Global</span>
-              <span className="block">Mining Performance</span>
-            </h1>
+            {heroLines.map((line) => (
+              <motion.span
+                key={line}
+                variants={headingLine}
+                className="block text-[3.2rem] font-black leading-[0.95] tracking-[-0.03em] sm:text-[3.75rem] md:text-[4.3rem] lg:text-[4.8rem] xl:text-[5.2rem]"
+              >
+                {line}
+              </motion.span>
+            ))}
           </motion.div>
 
           <motion.p
             initial={shouldReduceMotion ? { opacity: 1, y: 0 } : "hidden"}
-            animate="show"
-            variants={paragraphReveal}
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={subtitleReveal}
             className="max-w-[600px] text-base leading-8 text-slate-200/85 sm:text-lg"
           >
             Delivering enterprise mining solutions, operational excellence, engineering expertise and dependable execution for large-scale surface and underground operations.
           </motion.p>
 
           <motion.div
-            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : "hidden"}
-            animate="show"
-            variants={ctaReveal}
+            initial={shouldReduceMotion ? { opacity: 1, y: 0, scale: 1 } : "hidden"}
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={buttonReveal}
           >
             <motion.a
               href="#contact"

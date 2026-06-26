@@ -45,89 +45,99 @@ const columnVariants = {
 
 export function About() {
   return (
-    <section
-      id="about"
-      className="relative min-h-[110vh] w-full overflow-hidden bg-[url('/images/about-engineering.png')] bg-cover bg-center bg-no-repeat py-24 lg:py-28"
-    >
-      <div className="absolute inset-0 bg-black/72" />
+    <section id="about" className="relative overflow-hidden bg-slate-950 py-24 lg:py-32">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-slate-950/0 via-slate-950/50 to-slate-950/100" />
+      <div className="pointer-events-none absolute left-10 top-1/4 hidden h-80 w-[1px] bg-gradient-to-b from-transparent via-[#c6a861]/30 to-transparent lg:block" />
+      <div className="pointer-events-none absolute right-10 bottom-10 hidden h-40 w-40 rounded-full border border-[#c6a861]/10 bg-[#c6a861]/5 blur-2xl lg:block" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1480px] px-6 sm:px-8 lg:px-12">
-        <motion.div
-          className="space-y-6 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-140px" }}
-          transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] }}
-        >
-          <p className="text-xs uppercase tracking-[0.4em] text-[#c6a861]">
-            Over A Decade Of Experience
-          </p>
-          <h2 className="text-4xl font-black leading-[1.05] tracking-[-0.02em] sm:text-5xl md:text-5xl lg:text-6xl text-white">
-            About Bizh Mining
-          </h2>
-        </motion.div>
+        <div className="max-w-3xl">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.45em] text-[#c6a861]">
+              ABOUT BIZH MINING
+            </p>
+            <h2 className="mt-6 max-w-3xl text-4xl font-black leading-tight tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
+              Premier mining consultancy for confident engineering leadership.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+              Bizh Mining delivers executive-level advisory, rigorous technical planning, and disciplined operational execution for surface and underground mining projects.
+            </p>
+          </Reveal>
+        </div>
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-[1.45fr_1fr] lg:items-center lg:gap-12">
+        <div className="mt-16 grid gap-12 lg:grid-cols-[0.58fr_0.42fr] lg:items-start">
           <motion.div
-            className="space-y-10 rounded-[2rem] border border-white/10 bg-[#141414]/95 p-10 shadow-[0_30px_90px_rgba(0,0,0,0.35)] sm:p-12 lg:p-14"
+            className="space-y-10 rounded-[32px] border border-white/10 bg-white/5 p-8 shadow-[0_28px_90px_rgba(15,23,42,0.35)] backdrop-blur-xl sm:p-10 lg:p-12"
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-140px" }}
+            viewport={{ once: true, amount: 0.25 }}
             variants={containerVariants}
           >
-            <div className="space-y-6 max-w-2xl">
-              <p className="text-lg font-semibold uppercase tracking-[0.24em] text-[#c6a861]">
-                Mining Leadership & Legacy
+            <div className="space-y-5">
+              <span className="inline-flex rounded-full border border-[#c6a861]/20 bg-[#c6a861]/10 px-4 py-2 text-xs uppercase tracking-[0.36em] text-[#c6a861] shadow-sm">
+                Executive Insights
+              </span>
+              <h3 className="text-3xl font-black tracking-[-0.02em] text-white sm:text-4xl">
+                We translate mining engineering into safer, more profitable operations.
+              </h3>
+              <p className="max-w-2xl text-base leading-8 text-slate-300">
+                Our editorial-style approach removes noise, focuses on key investment levers, and presents mining leadership with clarity, credibility, and commercial discipline.
               </p>
-              <p className="text-lg leading-9 text-slate-200/85 sm:text-xl">
-                Bizh Mining delivers enterprise-scale mining solutions with a sharp focus on efficiency, safety, and long-term value across surface and underground operations.
-              </p>
-              <div className="grid gap-6 sm:grid-cols-2">
-                {columns.map((col, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="rounded-3xl border border-white/10 bg-slate-950/80 p-6"
-                    variants={columnVariants}
-                  >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#c6973a]/10 border border-[#c6973a]/30">
-                      <col.icon className="h-6 w-6 text-[#c6973a]" />
-                    </div>
-                    <h3 className="mt-5 text-base font-semibold tracking-tight text-white">
+            </div>
+
+            <div className="space-y-5">
+              {columns.map((col, idx) => (
+                <motion.div
+                  key={idx}
+                  className="group flex items-start gap-5 rounded-[24px] border border-white/10 bg-slate-950/95 p-6 transition duration-300 hover:-translate-y-1 hover:border-[#c6a861]/30 hover:bg-slate-900"
+                  variants={columnVariants}
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-[#c6973a]/10 text-[#c6973a] shadow-lg shadow-[#c6973a]/10 transition duration-300 group-hover:scale-[1.04]">
+                    <col.icon className="h-7 w-7" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-xl font-semibold tracking-tight text-white">
                       {col.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-200/75">
+                    </h4>
+                    <p className="mt-3 text-sm leading-7 text-slate-300/85">
                       {col.body}
                     </p>
-                  </motion.div>
-                ))}
-              </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
           <motion.div
-            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/90 shadow-[0_30px_90px_rgba(0,0,0,0.4)]"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-140px" }}
-            transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
+            className="relative overflow-hidden rounded-[32px] border border-white/10 shadow-[0_35px_120px_rgba(0,0,0,0.45)]"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.88, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            <div className="relative aspect-[4/5] overflow-hidden bg-slate-950/90">
+            <div className="relative aspect-[4/5] overflow-hidden bg-slate-950">
               <Image
                 src="/images/CEO.png"
                 alt="Tinashe Taruvinga, CEO and Founder"
                 fill
-                className="object-cover"
+                className="object-cover transition duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
-                <p className="text-xs uppercase tracking-[0.36em] text-[#c6a861]">
-                  CEO & Founder
-                </p>
-                <h3 className="mt-4 text-3xl font-black tracking-[-0.03em] text-white sm:text-4xl">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/20 to-transparent" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(198,168,97,0.15),_transparent_35%)]" />
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute left-6 top-12 h-16 w-[1px] bg-gradient-to-b from-transparent via-[#c6a861]/50 to-transparent" />
+                <div className="absolute right-6 bottom-16 h-20 w-[1px] bg-gradient-to-t from-transparent via-[#c6a861]/50 to-transparent" />
+              </div>
+
+              <div className="relative flex h-full flex-col justify-end p-8 sm:p-10 lg:p-12">
+                <span className="inline-flex rounded-full border border-[#c6a861]/20 bg-[#c6a861]/10 px-4 py-1 text-xs uppercase tracking-[0.35em] text-[#c6a861]">
+                  Founder & CEO
+                </span>
+                <h3 className="mt-6 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">
                   Tinashe Taruvinga
                 </h3>
-                <p className="mt-4 max-w-sm text-sm leading-7 text-slate-200/80 sm:text-base">
-                  Leading the company with a bold vision for resilient mining systems, strategic partnerships, and disciplined operational delivery.
+                <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200/90">
+                  “Our commitment is to deliver mining engineering leadership that protects people, strengthens productivity, and builds sustainable value for every stakeholder.”
                 </p>
               </div>
             </div>

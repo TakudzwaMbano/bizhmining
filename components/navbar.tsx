@@ -15,6 +15,34 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ]
 
+const navContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.13,
+      delayChildren: 0.15,
+    },
+  },
+}
+
+const navItem = {
+  hidden: { opacity: 0, y: -10 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 0.61, 0.36, 1] },
+  },
+}
+
+const logoVariants = {
+  hidden: { opacity: 0, y: -10 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 0.61, 0.36, 1] },
+  },
+}
+
 export function Navbar() {
 
   const [scrolled, setScrolled] = useState(false)
@@ -62,9 +90,14 @@ export function Navbar() {
           </span>
         </a>
 
-        <ul className="hidden items-center gap-10 lg:flex">
+        <motion.ul
+          className="hidden items-center gap-10 lg:flex"
+          initial="hidden"
+          animate="show"
+          variants={navContainer}
+        >
           {navLinks.map((link) => (
-            <li key={link.href}>
+            <motion.li key={link.href} variants={navItem}>
               <motion.a
                 href={link.href}
                 className="relative text-sm font-medium text-slate-200"
@@ -77,9 +110,9 @@ export function Navbar() {
                   transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
                 />
               </motion.a>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
 
         <motion.a
           href="#contact"
