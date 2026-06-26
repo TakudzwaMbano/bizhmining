@@ -63,7 +63,7 @@ export function Hero() {
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <section id="home" className="relative min-h-[100vh] w-full overflow-visible scroll-mt-20 text-white">
+    <section id="home" className="relative min-h-[100vh] w-full overflow-hidden scroll-mt-20 text-white">
       <motion.div
         className="absolute inset-0 bg-[url('/images/hero-mining.png')] bg-cover bg-center bg-no-repeat"
         initial={shouldReduceMotion ? { scale: 1 } : "hidden"}
