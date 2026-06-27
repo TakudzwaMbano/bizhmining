@@ -112,38 +112,60 @@ export function About() {
           </motion.div>
 
           <motion.div
-            className="relative overflow-hidden rounded-[32px] border border-white/10 shadow-[0_35px_120px_rgba(0,0,0,0.45)]"
+            className="overflow-hidden rounded-[32px] border border-white/10 bg-[#1d1818]/90 shadow-[0_35px_120px_rgba(0,0,0,0.45)]"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.88, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            <div className="relative aspect-[4/5] overflow-hidden bg-slate-950">
-              <Image
-                src="/images/new%20nyasha%20image.jpeg"
-                alt="Nyasha Taruvinga, CEO and Founder"
-                fill
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/20 to-transparent" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(198,168,97,0.15),_transparent_35%)]" />
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute left-6 top-12 h-16 w-[1px] bg-gradient-to-b from-transparent via-[#c6a861]/50 to-transparent" />
-                <div className="absolute right-6 bottom-16 h-20 w-[1px] bg-gradient-to-t from-transparent via-[#c6a861]/50 to-transparent" />
+            <motion.div
+              className="relative overflow-hidden bg-slate-950"
+              initial={{ opacity: 0, scale: 1.04 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1] }}
+            >
+              <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/6] lg:aspect-[4/5]">
+                <Image
+                  src="/images/new%20nyasha%20image.jpeg"
+                  alt="Nyasha Taruvinga, CEO and Founder"
+                  fill
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1d1818]/95 via-[#1d1818]/10 to-transparent" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(198,168,97,0.15),_transparent_38%)]" />
               </div>
 
-              <div className="relative flex h-full flex-col justify-end p-8 sm:p-10 lg:p-12">
-                <span className="inline-flex rounded-full border border-[#c6a861]/20 bg-[#c6a861]/10 px-4 py-1 text-xs uppercase tracking-[0.35em] text-[#c6a861]">
+              <div className="flex flex-col items-center px-7 py-8 text-center sm:px-10 sm:py-10 lg:px-12 lg:py-12">
+                <motion.span
+                  className="inline-flex rounded-full border border-[#c6a861]/20 bg-[#c6a861]/10 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#c6a861]"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
+                >
                   Founder & CEO
-                </span>
-                <h3 className="mt-6 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">
+                </motion.span>
+                <motion.h3
+                  className="mt-5 text-3xl font-black tracking-[-0.03em] text-white sm:text-4xl lg:text-[2.5rem]"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 0.61, 0.36, 1] }}
+                >
                   Nyasha Taruvinga
-                </h3>
-                <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200/90">
+                </motion.h3>
+                <motion.p
+                  className="mt-4 max-w-xl text-base leading-8 text-slate-200/90 sm:text-lg"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.7, delay: 0.16, ease: [0.22, 0.61, 0.36, 1] }}
+                >
                   “Our commitment is to deliver mining engineering leadership that protects people, strengthens productivity, and builds sustainable value for every stakeholder.”
-                </p>
+                </motion.p>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
