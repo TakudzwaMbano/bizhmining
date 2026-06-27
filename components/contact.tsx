@@ -28,7 +28,8 @@ const addressLines = [
 
 const southAfricaPhone = "+27 79 174 4275"
 const zimbabwePhone = "+263 77 385 2864"
-const emailAddress = "info@bizhmining.co.za"
+const ceoPhone = "+263 778 069 285"
+const emailAddress = "nyashataruvinga@bizhmining.com"
 const googleMapsUrl =
   "https://www.google.com/maps/search/?api=1&query=" +
   encodeURIComponent(addressLines.join(", "))
@@ -91,7 +92,7 @@ export function Contact() {
                   <InfoRow
                     icon={Phone}
                     heading="Zimbabwe"
-                    details={[zimbabwePhone]}
+                    details={[zimbabwePhone, ceoPhone]}
                     href={`tel:${zimbabwePhone.replace(/\s+/g, "")}`}
                     delay={0.2}
                   />

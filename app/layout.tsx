@@ -11,7 +11,10 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const siteUrl = 'https://bizhmining.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Bizh Mining (PTY) Ltd | Underground & Surface Mining Consultancy',
   description:
     'Bizh Mining (PTY) Ltd is a South African mining consultancy delivering sustainable underground and surface mining solutions that increase production, improve safety, and reduce operational costs.',
@@ -23,7 +26,42 @@ export const metadata: Metadata = {
     'South Africa mining',
     'mineral resource management',
   ],
-  generator: 'v0.app',
+  applicationName: 'Bizh Mining',
+  authors: [{ name: 'Bizh Mining' }],
+  creator: 'Bizh Mining',
+  publisher: 'Bizh Mining',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'Bizh Mining (PTY) Ltd | Underground & Surface Mining Consultancy',
+    description:
+      'Bizh Mining (PTY) Ltd provides sustainable underground and surface mining consultancy services that improve safety, productivity, and operational performance.',
+    url: siteUrl,
+    siteName: 'Bizh Mining',
+    locale: 'en_ZA',
+    type: 'website',
+    images: [
+      {
+        url: '/images/hero-mining.png',
+        width: 1200,
+        height: 630,
+        alt: 'Bizh Mining mining consultancy team',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bizh Mining (PTY) Ltd | Underground & Surface Mining Consultancy',
+    description:
+      'Bizh Mining (PTY) Ltd provides sustainable underground and surface mining consultancy services that improve safety, productivity, and operational performance.',
+    images: ['/images/hero-mining.png'],
+  },
+  generator: 'Next.js',
   icons: {
     icon: [
       {

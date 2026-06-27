@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Check } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 
@@ -26,11 +27,15 @@ export function WhyChoose() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <div className="overflow-hidden rounded-sm">
-              <img
-                src="/images/why-choose-background.jpg"
-                alt="Underground mining tunnel with ground support and industrial lighting"
-                className="aspect-4/3 w-full object-cover"
-              />
+              <div className="relative aspect-4/3 w-full">
+                <Image
+                  src="/images/why-choose-background.jpg"
+                  alt="Underground mining tunnel with ground support and industrial lighting"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+              </div>
             </div>
           </Reveal>
 
