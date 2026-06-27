@@ -139,12 +139,6 @@ export function About() {
                 <h3 className="mt-6 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">
                   Nyasha Taruvinga
                 </h3>
-                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.28em] text-[#c6a861]">
-                  +263 778 069 285
-                </p>
-                <p className="mt-2 text-sm font-medium tracking-[0.18em] text-slate-200/90">
-                  nyashataruvinga@bizhmining.com
-                </p>
                 <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200/90">
                   “Our commitment is to deliver mining engineering leadership that protects people, strengthens productivity, and builds sustainable value for every stakeholder.”
                 </p>
