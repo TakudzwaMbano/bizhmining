@@ -108,7 +108,7 @@ export function Hero() {
           variants={staggerContainer}
         >
           <motion.p variants={fadeUp} className="text-xs uppercase tracking-[0.42em] text-[#c6a861]">
-            SURFACE & UNDERGROUND MINING SOLUTIONS
+            from small scale to large scale surface and underground operations
           </motion.p>
 
           <motion.div variants={staggerContainer} className="space-y-1">
