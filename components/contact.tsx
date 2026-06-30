@@ -33,12 +33,37 @@ const emailAddress = "nyashataruvinga@bizhmining.com"
 const googleMapsUrl =
   "https://www.google.com/maps/search/?api=1&query=" +
   encodeURIComponent(addressLines.join(", "))
+const whatsappNumber = southAfricaPhone.replace(/\D/g, "")
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false)
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+
+    const formData = new FormData(e.currentTarget)
+    const name = String(formData.get("name") ?? "").trim()
+    const company = String(formData.get("company") ?? "").trim()
+    const email = String(formData.get("email") ?? "").trim()
+    const phone = String(formData.get("phone") ?? "").trim()
+    const service = String(formData.get("service") ?? "").trim()
+    const message = String(formData.get("message") ?? "").trim()
+
+    const whatsappText = [
+      "Hello Bizh Mining,",
+      name ? `My name is ${name}.` : "",
+      company ? `Company: ${company}.` : "",
+      phone ? `Phone: ${phone}.` : "",
+      email ? `Email: ${email}.` : "",
+      service ? `Service required: ${service}.` : "",
+      message ? `Project details: ${message}` : "",
+      "Please get in touch with me."
+    ]
+      .filter(Boolean)
+      .join(" ")
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappText)}`
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer")
     setSubmitted(true)
   }
 
